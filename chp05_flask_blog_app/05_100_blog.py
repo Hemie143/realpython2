@@ -61,11 +61,11 @@ def add():
         flash("All fields are required. Please try again.")
         return redirect(url_for('main'))
     else:
-        g.db = connect_dh()
-        g.db.execute('insert into posts (title, post) values (?, ?)', [request.form['title'], request.form['post'])
+        g.db = connect_db()
+        g.db.execute('insert into posts (title, post) values (?, ?)', [request.form['title'], request.form['post']])
         g.db.commit()
         g.db.close()
-        flash('Now entry was succesfully posted')
+        flash('Now entry was succesfully posted!')
         return redirect(url_for('main'))
 
 if __name__ == '__main__':
