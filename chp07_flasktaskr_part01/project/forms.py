@@ -1,11 +1,18 @@
+# project/forms.py
+
+
 from flask_wtf import Form
 from wtforms import StringField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired
 
+
 class AddTaskForm(Form):
-    task_id = IntegerField
+    task_id = IntegerField()
     name = StringField('Task Name', validators=[DataRequired()])
-    due_date = DateField('Date Due (dd/mm/yyyy)', validators=[DataRequired()], format="%d/%m/%Y")
+    due_date = DateField(
+        'Date Due (dd/mm/yyyy)',
+        validators=[DataRequired()], format="%d/%m/%Y"
+    )
     priority = SelectField(
         'Priority',
         validators=[DataRequired()],
