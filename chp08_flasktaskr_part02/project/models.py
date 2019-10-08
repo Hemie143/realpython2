@@ -12,7 +12,7 @@ class Task(db.Model):
     priority = db.Column(db.Integer, nullable=False)
     status = db.Column(db.Integer)
 
-    def __init__(selfself, name, due_date, priority, status):
+    def __init__(self, name, due_date, priority, status):
         self.name = name
         self.due_date = due_date
         self.priority = priority
