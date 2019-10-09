@@ -1,6 +1,7 @@
 # project/views.py
 
 from functools import wraps
+import datetime
 
 from forms import AddTaskForm, RegisterForm, LoginForm
 from flask import Flask, flash, redirect, render_template, request, session, url_for
@@ -78,6 +79,8 @@ def new_task():
                 form.name.data,
                 form.due_date.data,
                 form.priority.data,
+                datetime.datetime.utcnow()
+                '1',
                 '1'
             )
             db.session.add(new_task)
