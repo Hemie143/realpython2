@@ -1,4 +1,4 @@
-# project/test.py
+# project/test_all.py
 
 import os
 import unittest

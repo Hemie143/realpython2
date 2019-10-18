@@ -125,3 +125,5 @@ dmypy.json
 
 *.pdf
 /chp08_flasktaskr_part02/project/flasktaskr.db
+.coverage
+/htmlcov
