@@ -3,9 +3,9 @@
 import os
 import unittest
 
-from chp12_flasktaskr_part05.project import app, db
-from chp12_flasktaskr_part05.project._config import basedir
-from chp12_flasktaskr_part05.project.models import Task, User
+from chp13_flasktaskr_part06.project import app, db
+from chp13_flasktaskr_part06.project._config import basedir
+from chp13_flasktaskr_part06.project.models import Task, User
 
 TEST_DB = 'test.db'
 

@@ -1,6 +1,6 @@
 # project/models.py
 
-from chp12_flasktaskr_part05.project import db
+from chp13_flasktaskr_part06.project import db
 import datetime
 
 class Task(db.Model):
