@@ -3,7 +3,7 @@
 import os
 import unittest
 
-from chp13_flasktaskr_part06.project import app, db
+from chp13_flasktaskr_part06.project import app, db, bcrypt
 from chp13_flasktaskr_part06.project._config import basedir
 from chp13_flasktaskr_part06.project.models import Task, User
 
@@ -37,12 +37,15 @@ class TasksTests(unittest.TestCase):
         return self.app.get('logout/', follow_redirects=True)
 
     def create_user(self, name, email, password):
-        new_user = User(name=name, email=email, password=password)
+        new_user = User(name=name, email=email, password=bcrypt.generate_password_hash(password))
         db.session.add(new_user)
         db.session.commit()
 
     def create_admin_user(self):
-        new_user = User(name='Superman', email='admin@realpython.com', password='allpowerful', role='admin')
+        new_user = User(name='Superman',
+                        email='admin@realpython.com',
+                        password=bcrypt.generate_password_hash('allpowerful'),
+                        role='admin')
         db.session.add(new_user)
         db.session.commit()
 

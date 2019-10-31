@@ -3,7 +3,7 @@
 import os
 import unittest
 
-from chp13_flasktaskr_part06.project import app, db
+from chp13_flasktaskr_part06.project import app, db, bcrypt
 from chp13_flasktaskr_part06.project._config import basedir
 from chp13_flasktaskr_part06.project.models import Task, User
 
@@ -27,9 +27,11 @@ class UsersTests(unittest.TestCase):
     # Helpers ############################################################################
 
     def login(self, name, password):
+        password = password.encode('utf-8')
         return self.app.post('/', data=dict(name=name, password=password), follow_redirects=True)
 
     def register(self, name, email, password, confirm):
+        password = password.encode('utf-8')
         return self.app.post('register/', data=dict(name=name, email=email, password=password, confirm=confirm),
                              follow_redirects=True)
 
@@ -37,7 +39,7 @@ class UsersTests(unittest.TestCase):
         return self.app.get('logout/', follow_redirects=True)
 
     def create_user(self, name, email, password):
-        new_user = User(name=name, email=email, password=password)
+        new_user = User(name=name, email=email, password=bcrypt.generate_password_hash(password))
         db.session.add(new_user)
         db.session.commit()
 
@@ -53,7 +55,7 @@ class UsersTests(unittest.TestCase):
     # Tests ###############################################################################
 
     def test_users_can_register(self):
-        new_user = User('michael', 'michael@herman.org', 'michaelherman')
+        new_user = User('michael', 'michael@herman.org', bcrypt.generate_password_hash('michaelherman'))
         db.session.add(new_user)
         db.session.commit()
         test = db.session.query(User).all()
@@ -129,7 +131,7 @@ class UsersTests(unittest.TestCase):
         users = db.session.query(User).all()
         print(users)
         for user in users:
-            self.assertEquals(user.role, 'user')
+            self.assertEqual(user.role, 'user')
 
 
 if __name__ == '__main__':
