@@ -14,9 +14,11 @@ class MainTests(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
+        app.config['DEBUG'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, TEST_DB)
         self.app = app.test_client()
         db.create_all()
+        self.assertEqual(app.debug, False)
 
     def tearDown(self):
         db.session.remove()
@@ -38,10 +40,14 @@ class MainTests(unittest.TestCase):
         bad_user = User('Jeremy', email='jeremy@realpython.com', password='django')
         db.session.add(bad_user)
         db.session.commit()
-        response = self.login('Jeremy', 'django')
-        self.assertEqual(response.status_code, 500)
-        self.assertNotIn(b'ValueError: Invalid salt', response.data)
-        self.assertIn(b'Something went terribly wrong.', response.data)
+        self.assertRaises(ValueError, self.login, 'Jeremy', 'django')
+        try:
+            response = self.login('Jeremy', 'django')
+            self.assertEqual(response.status_code, 500)
+        except ValueError:
+            pass
+        # self.assertNotIn(b'ValueError: Invalid salt', response.data)
+        # self.assertIn(b'Something went terribly wrong.', response.data)
 
 if __name__ == '__main__':
     unittest.main()
