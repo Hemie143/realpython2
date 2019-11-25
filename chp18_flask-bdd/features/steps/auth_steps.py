@@ -20,6 +20,23 @@ def logout(context):
     context.page = context.client.get('/logout', follow_redirects=True)
     assert context.page
 
+@when(u'we add a new entry with "{title}" and "{text}" as the title and text')
+def add(context, title, text):
+    context.page = context.client.post(
+        '/add',
+        data=dict(title=title, text=text),
+        follow_redirects=True,
+    )
+    assert context.page
+
+@given(u'we are not logged in')
+def logout(context):
+    context.page = context.client.get('/logout', follow_redirects=True)
+
 @then(u'we should see the alert "{message}"')
 def message(context, message):
     assert str.encode(message) in context.page.data
+
+@then(u'we should see the post with "{title}" and "{text}" as the title and text')
+def entry(context, title, text):
+    assert title and text in context.page.data
