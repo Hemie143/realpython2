@@ -25,6 +25,13 @@
       </d1>
     </form>
   {% endif %}
+<u1>
+    {% for entry in entries %}
+        <li><h2>{{ entry.title }}</h2>{{ entry.text|safe }}</li>
+    {% else %}}
+        <li><em>No entries yet. Add some!</em></li>
+    {% endfor %}
+</u1>
 </div>
   
 {% endblock %}

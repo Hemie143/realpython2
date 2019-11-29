@@ -39,4 +39,4 @@ def message(context, message):
 
 @then(u'we should see the post with "{title}" and "{text}" as the title and text')
 def entry(context, title, text):
-    assert title and text in context.page.data
+    assert str.encode(title) and str.encode(text) in context.page.data
