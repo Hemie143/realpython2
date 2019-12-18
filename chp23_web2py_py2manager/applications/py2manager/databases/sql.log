@@ -112,3 +112,46 @@ CREATE TABLE "project"(
     "completed" CHAR(1) NOT NULL
 );
 success!
+timestamp: 2019-12-18T06:56:25.907927
+ALTER TABLE "auth_user" ADD "address" CHAR(512);
+timestamp: 2019-12-18T06:58:10.341175
+ALTER TABLE "auth_user" ADD "address" CHAR(512);
+timestamp: 2019-12-18T06:58:18.063124
+ALTER TABLE "auth_user" ADD "address" CHAR(512);
+timestamp: 2019-12-18T06:58:42.844173
+ALTER TABLE "auth_user" ADD "address2" CHAR(512);
+timestamp: 2019-12-18T06:58:42.869187
+ALTER TABLE "auth_user" ADD "city" CHAR(512);
+timestamp: 2019-12-18T06:59:20.996665
+ALTER TABLE "auth_user" ADD "address2" CHAR(512);
+timestamp: 2019-12-18T06:59:56.105133
+ALTER TABLE "auth_user" ADD "address3" CHAR(512);
+timestamp: 2019-12-18T06:59:56.140382
+ALTER TABLE "auth_user" ADD "city3" CHAR(512);
+timestamp: 2019-12-18T06:59:56.164139
+ALTER TABLE "auth_user" ADD "zip3" CHAR(512);
+timestamp: 2019-12-18T06:59:56.188111
+ALTER TABLE "auth_user" ADD "image3" CHAR(512);
+success!
+timestamp: 2019-12-18T16:19:57.360822
+ALTER TABLE "auth_user" ADD "address" CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

@@ -4,10 +4,24 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # this is the main application menu add/remove items as required
 # ----------------------------------------------------------------------------------------------------------------------
-
+response.logo = A(B('py',SPAN(2),'manager'),_class="brand")
+response.title = 'py2manager'
+response.subtitle = T('just another project manager')
 response.menu = [
-    (T('Home'), False, URL('default', 'index'), [])
+    (T('Home'), False, URL('default', 'index'), []),
+    (T('Add Project'), False, URL('default', 'add'), []),
+    (T('Add Company'), False, URL('default', 'company'), []),
+    (T('Employees'), False, URL('default', 'employee'), [])
 ]
+
+DEVELOPMENT_MENU = False
+
+response.menu = [(T('Home'), False, URL('default', 'index'), []),
+    (T('Add Project'), False, URL('default', 'add'), []),
+    (T('Add Company'), False, URL('default', 'company'), []),
+    (T('Employees'), False, URL('default', 'employee'), [])]
+
+wDEVELOPMENT_MENU = False
 
 # ----------------------------------------------------------------------------------------------------------------------
 # provide shortcuts for development. you can remove everything below in production

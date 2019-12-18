@@ -193,3 +193,5 @@ HOWTO-web2py-devel
 site-packages/
 logs/
 __pycache__/
+/chp23_web2py_py2manager/applications/welcome/
+/chp23_web2py_py2manager/applications/examples/
