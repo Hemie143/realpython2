@@ -5,7 +5,7 @@
 # Auth is for authenticaiton and access control
 # -------------------------------------------------------------------------
 from gluon.contrib.appconfig import AppConfig
-from gluon.tools import Auth
+from gluon.tools import Auth, Service, PluginManager, Crud
 
 # -------------------------------------------------------------------------
 # This scaffolding model makes your app work on Google App Engine too
@@ -87,6 +87,9 @@ response.form_label_separator = ''
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=configuration.get('host.names'))
+service = Service()
+plugins = PluginManager()
+crud = Crud(db)
 
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields

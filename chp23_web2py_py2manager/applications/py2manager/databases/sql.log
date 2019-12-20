@@ -155,3 +155,32 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+timestamp: 2019-12-20T07:06:25.481410
+CREATE TABLE "note"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "post_id" INTEGER REFERENCES "project" ("id") ON DELETE CASCADE  ,
+    "post" TEXT NOT NULL,
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2019-12-20T07:08:47.742287
+CREATE TABLE "note"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "post_id" INTEGER REFERENCES "project" ("id") ON DELETE CASCADE  ,
+    "post" TEXT NOT NULL,
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
