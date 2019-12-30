@@ -195,3 +195,6 @@ logs/
 __pycache__/
 /chp23_web2py_py2manager/applications/welcome/
 /chp23_web2py_py2manager/applications/examples/
+/chp23_web2py_py2manager/applications/py2manager/databases/
+/chp23_web2py_py2manager/applications/py2manager/errors/
+/chp23_web2py_py2manager/applications/py2manager/sessions/
