@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from scrapy import CrawlSpider
+from scrapy.spiders import CrawlSpider, Rule
 from scrapy.selector import Selector
 from scrapy.linkextractors import LinkExtractor
 
@@ -7,10 +7,10 @@ from socrata.items import SocrataItem
 
 
 class OpendataSpider(CrawlSpider):
-    name = 'opendatacrawl'
+    name = 'opendata_crawl'
     allowed_domains = ['opendata.socrata.com']
     start_urls = ['http://opendata.socrata.com/']
-    rules = [Rule(LinkExtractor(allow='browse\?utf8=%E2%9C%93&page=\d*'), callback='parse_item', follow=True)]
+    rules = [Rule(LinkExtractor(allow='browse\?&page=\d*'), callback='parse_item', follow=True)]
 
     def parse_item(self, response):
         titles = Selector(response).xpath('//div[@class="browse2-result"]')

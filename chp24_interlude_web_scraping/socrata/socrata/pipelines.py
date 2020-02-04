@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sqlite3
 
 # Define your item pipelines here
 #
@@ -7,5 +8,12 @@
 
 
 class SocrataPipeline(object):
+    def __init__(self):
+        self.conn = sqlite3.connect('project.db')
+        self.cur = self.conn.cursor()
+
     def process_item(self, item, spider):
+        self.cur.execute("INSERT INTO data(text, url, views) values (?,?,?)",
+                         (item['text'], item['url'], item['views']))
+        self.conn.commit()
         return item
